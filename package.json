@@ -1,0 +1,19 @@
+{
+  "name": "bitburner-bridge",
+  "version": "0.1.0",
+  "private": true,
+  "description": "An in-game conversation window and local MCP bridge for Bitburner.",
+  "type": "module",
+  "license": "MIT",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "node server.mjs",
+    "mcp": "node mcp.mjs",
+    "install-game": "node install-game.mjs",
+    "stop": "node stop.mjs",
+    "test:live": "node mcp-smoke.mjs",
+    "test": "node --test bridge.test.mjs",
+    "check": "node --check server.mjs && node --check codex-client.mjs && node --check game-client.js && node --check tools.mjs && node --check mcp.mjs"
+  },
+  "dependencies": { "@modelcontextprotocol/sdk": "^1.26.0", "ws": "^8.18.0" }
+}
