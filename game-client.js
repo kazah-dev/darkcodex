@@ -1,4 +1,4 @@
-/** Bitburner Bridge: local conversation window and explicit game command adapter. */
+/** DarkCodex: local conversation window and explicit game command adapter. */
 const h=(...args)=>React.createElement(...args);
 const colors={bg:'#0b1420',panel:'#152333',border:'#2b4054',ink:'#e7eff7',muted:'#9fb2c7',accent:'#79e2c3',blue:'#90bdff',warn:'#f0c47b'};
 const compact=n=>new Intl.NumberFormat('en-US',{notation:'compact',maximumFractionDigits:2}).format(n||0);
@@ -49,7 +49,7 @@ export function ChatWindow({model,send}){
   const card=(label,value)=>h('div',{style:{padding:12,background:colors.panel,borderRadius:9}},h('div',{style:{fontSize:11,color:colors.muted,marginBottom:5}},label),h('strong',{style:{fontSize:20}},value));
   return h('div',{ref:root,style:{background:colors.bg,color:colors.ink,fontFamily:'Inter, Segoe UI, sans-serif',height:650,minHeight:440,boxSizing:'border-box',display:'flex',flexDirection:'column',padding:18,gap:12,whiteSpace:'normal',width:'100%',textAlign:'left'}},
     h('header',{style:{display:'flex',justifyContent:'space-between',alignItems:'center',gap:12}},
-      h('div',null,h('div',{style:{fontSize:21,fontWeight:750}},'Bitburner Bridge'),h('div',{style:{fontSize:12,color:colors.muted,marginTop:3}},'Your operations, in conversation')),
+      h('div',null,h('div',{style:{fontSize:21,fontWeight:750}},'DarkCodex'),h('div',{style:{fontSize:12,color:colors.muted,marginTop:3}},'Your operations, in conversation')),
       h('div',{style:{display:'flex',gap:6}},pill(model.connected?'Game connected':'Reconnecting…',model.connected?colors.accent:colors.warn),pill(model.codex?'Codex ready':'Codex offline',model.codex?colors.blue:colors.warn))),
     h('div',{style:{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:8}},card('BALANCE','$'+compact(state.money)),card('HACKING',compact(state.hacking)),card('NETWORK RAM',state.ram?Math.round(100*state.used/state.ram)+'%':'—'),card('SERVERS',state.servers?state.rooted+' / '+state.servers:'—')),
     h('nav',{style:{display:'flex',gap:8}},...['Chat','Activity'].map(t=>h('button',{key:t,style:{...button,background:tab===t?'#25473f':'#152333'},onClick:()=>setTab(t)},t)),h('span',{style:{marginLeft:'auto',fontSize:12,color:colors.muted,alignSelf:'center'}},model.busy?'Working…':'Ready when you are')),
@@ -96,7 +96,7 @@ export async function main(ns){
       }catch{model.error='Received an invalid bridge message';}
     };
   };
-  ns.ui.openTail();const [width,height]=ns.ui.windowSize();ns.ui.resizeTail(Math.min(960,width-40),Math.min(740,height-100));ns.ui.moveTail(Math.max(10,Math.min(300,width-980)),45);ns.ui.setTailTitle('Bitburner Bridge / Conversation');
+  ns.ui.openTail();const [width,height]=ns.ui.windowSize();ns.ui.resizeTail(Math.min(960,width-40),Math.min(740,height-100));ns.ui.moveTail(Math.max(10,Math.min(300,width-980)),45);ns.ui.setTailTitle('DarkCodex / Conversation');
   ns.clearLog();ns.printRaw(h(ChatWindow,{model,send}));
   ns.atExit(()=>{running=false;ws?.close();});
   connect();

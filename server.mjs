@@ -133,7 +133,7 @@ export async function startServer({port=27153,remotePort=27152,withCodex=true,st
   }catch(e){remoteServer.close();wss.close();api.close();throw e;}
   // Do not invalidate a running service's capability if a second start fails to bind.
   await writeFile(path.join(local,'connection.json'),JSON.stringify({port,token}),{mode:0o600});
-  console.log(`Bitburner Bridge: 127.0.0.1:${port}; game Remote API: 127.0.0.1:${remotePort}`);
+  console.log(`DarkCodex: 127.0.0.1:${port}; game Remote API: 127.0.0.1:${remotePort}`);
   if(codex)codex.start().catch(e=>event({type:'error',message:e.message}));
   const close=()=>{if(closed)return;closed=true;codex?.close();gamePending.close();remotePending.close();for(const p of approvals.values()){clearTimeout(p.timer);p.reject(Error('Bridge stopped'));}game?.terminate();remote?.terminate();wss.close();remoteServer.close();api.close();};
   return {close,execute,health:()=>({game:!!game,remote:!!remote,codex:codex?.ready??false,snapshot})};

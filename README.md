@@ -1,4 +1,6 @@
-# Bitburner Bridge
+# DarkCodex
+
+<p align="center"><img src="darkcodex-logo.png" alt="DarkCodex logo" width="420"></p>
 
 An in-game conversation window backed by a local Codex process, with live game tools and an optional MCP interface.
 
@@ -29,8 +31,8 @@ Model usage goes through your configured Codex account/provider and its normal l
 ## Quick start
 
 ```sh
-git clone https://github.com/kazah-dev/bitburner-bridge.git
-cd bitburner-bridge
+git clone https://github.com/kazah-dev/darkcodex.git
+cd darkcodex
 npm ci
 codex login
 npm start
@@ -83,7 +85,7 @@ The in-game chat uses Codex app-server dynamic tools. `mcp.mjs` exposes the same
 ```json
 {
   "command": "node",
-  "args": ["/absolute/path/to/bitburner-bridge/mcp.mjs"]
+  "args": ["/absolute/path/to/darkcodex/mcp.mjs"]
 }
 ```
 

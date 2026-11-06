@@ -3,7 +3,7 @@ import {StdioServerTransport} from '@modelcontextprotocol/sdk/server/stdio.js';
 import {ListToolsRequestSchema,CallToolRequestSchema} from '@modelcontextprotocol/sdk/types.js';
 import {readFile} from 'node:fs/promises';
 import {tools,mutations,validate} from './tools.mjs';
-const server=new Server({name:'bitburner-bridge',version:'0.1.0'},{capabilities:{tools:{}}});
+const server=new Server({name:'darkcodex',version:'0.1.0'},{capabilities:{tools:{}}});
 server.setRequestHandler(ListToolsRequestSchema,async()=>({tools:tools.map(t=>({...t,annotations:{readOnlyHint:!mutations.has(t.name),destructiveHint:mutations.has(t.name),openWorldHint:false}}))}));
 server.setRequestHandler(CallToolRequestSchema,async({params})=>{
   try{

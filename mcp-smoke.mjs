@@ -2,7 +2,7 @@
 import {Client} from '@modelcontextprotocol/sdk/client/index.js';
 import {StdioClientTransport} from '@modelcontextprotocol/sdk/client/stdio.js';
 import {fileURLToPath} from 'node:url';
-const client=new Client({name:'bitburner-bridge-smoke',version:'0.1.0'});
+const client=new Client({name:'darkcodex-smoke',version:'0.1.0'});
 const transport=new StdioClientTransport({command:process.execPath,args:[fileURLToPath(new URL('./mcp.mjs',import.meta.url))]});
 try{
   await client.connect(transport);
